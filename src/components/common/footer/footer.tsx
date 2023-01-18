@@ -1,8 +1,9 @@
-import { Box, Container, Stack, Text, Link, useColorModeValue } from '@chakra-ui/react';
+import { Box, Container, Icon, Stack, Text, useColorModeValue } from '@chakra-ui/react';
+import Link from 'next/link';
 
 export const Footer = () => {
   return (
-    <Box border={'1px solid black'}>
+    <Box borderY={'1px solid black'}>
       <Container
         as={Stack}
         maxW={'6xl'}
@@ -11,16 +12,19 @@ export const Footer = () => {
         spacing={4}
         justify={{ base: 'center', md: 'space-between' }}
         align={{ base: 'center', md: 'center' }}
+        alignItems="center"
       >
-        <Stack direction={'row'} spacing={6}>
+        <Stack direction={'row'} spacing={12}>
           <Link href={'/'}>Home</Link>
-          <Link href={'/'}>Create</Link>
-          <Link href={'/'}>Market</Link>
-          <Link href={'https://twitter.com/Deep_in_Crypto'} target="_blank">
-            Twitter
-          </Link>
+          <Link href={'/gacha'}>Gacha</Link>
+          <Link href={'/create'}>Create</Link>
         </Stack>
-        <Text>© 2022 VWBL ガチャ. All rights reserved</Text>
+        <Text>
+          Build by{' '}
+          <Link href="https://twitter.com/Deep_in_Crypto" target="_blank" className="nes-text is-primary">
+            bibitto
+          </Link>
+        </Text>
       </Container>
     </Box>
   );

@@ -18,7 +18,9 @@ export const Layout: FC<Props> = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <Box minH={`calc(100vh - 120px)`}>{children}</Box>
+      <Box minH={`calc(100vh - 120px)`} p={8}>
+        {children}
+      </Box>
       <Footer />
     </>
   );
