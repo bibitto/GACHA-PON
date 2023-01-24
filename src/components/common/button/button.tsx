@@ -1,7 +1,16 @@
-import { Button as ChakraButton, Icon, BorderProps, forwardRef, As, TypographyProps, ButtonProps } from '@chakra-ui/react';
+import {
+  Button as ChakraButton,
+  Icon,
+  BorderProps,
+  forwardRef,
+  As,
+  TypographyProps,
+  ButtonProps,
+} from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 
 type Props = {
+  className?: string;
   text: string;
   type?: 'button' | 'submit' | 'reset' | undefined;
   isLoading?: boolean;
@@ -14,7 +23,7 @@ type Props = {
   mb?: string | number;
   mr?: string | number;
   ml?: string | number;
-  border?: BorderProps['border'];
+  bg?: 'string';
   borderRadius?: BorderProps['borderRadius'];
   disalbed?: ButtonProps['disabled'];
   onClick?: () => void;
@@ -26,6 +35,7 @@ type Props = {
 export const Button: React.FC<Props> = forwardRef(
   (
     {
+      className,
       text,
       type,
       isLoading,
@@ -38,7 +48,7 @@ export const Button: React.FC<Props> = forwardRef(
       mb,
       mr,
       ml,
-      border,
+      bg,
       borderRadius,
       disalbed,
       onClick,
@@ -46,10 +56,11 @@ export const Button: React.FC<Props> = forwardRef(
       icon,
       as,
     },
-    ref,
+    ref
   ) => {
     return (
       <ChakraButton
+        className={className}
         ref={ref}
         type={type}
         isLoading={isLoading}
@@ -57,7 +68,7 @@ export const Button: React.FC<Props> = forwardRef(
         w={width}
         h={height}
         fontWeight={fontWeight}
-        bg={isReversed ? 'white' : 'black'}
+        bg={bg}
         color={isReversed ? 'black' : 'white'}
         mt={mt}
         mb={mb}
@@ -65,7 +76,6 @@ export const Button: React.FC<Props> = forwardRef(
         ml={ml}
         borderRadius={borderRadius}
         fontSize={fontSize}
-        border={isReversed ? '1px solid' : border}
         disabled={disalbed}
         _hover={{ opacity: 0.7 }}
         onClick={onClick}
@@ -75,5 +85,5 @@ export const Button: React.FC<Props> = forwardRef(
         {text}
       </ChakraButton>
     );
-  },
+  }
 );
