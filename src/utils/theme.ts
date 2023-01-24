@@ -5,6 +5,14 @@ export const theme = extendTheme({
     transparent: 'transparent',
     black: '#000',
     white: '#fff',
-    teal: '',
+  },
+  fonts: {
+    heading: `'Press Start 2P', sans-serif`,
+    body: `'Press Start 2P', sans-serif`,
+  },
+  components: {
+    Link: {
+      textDecoration: 'none',
+    },
   },
 });
