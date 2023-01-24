@@ -7360,9 +7360,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-"vwbl-sdk@https://github.com/VWBL/VWBL-SDK.git#develop":
-  version "0.1.4"
-  resolved "https://github.com/VWBL/VWBL-SDK.git#e4dec6ee4d9359c42a96feee97cc336cd18500ad"
+vwbl-sdk@0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/vwbl-sdk/-/vwbl-sdk-0.1.5.tgz#baaa42becbfe8ab1272302e78a3975c9624f9c76"
+  integrity sha512-z4h36pT4BBPCw6tGSaL23JYYna5LCSVqR+F7ygi2hPaxhlZJGcr10UnDd/m26s+4qfHkjVyYMOW/ZFpGkj9Ciw==
   dependencies:
     aws-sdk "^2.1046.0"
     axios "^0.27.2"

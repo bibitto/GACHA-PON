@@ -27,7 +27,7 @@
     "react-icons": "^4.7.1",
     "typescript": "4.9.4",
     "unstated-next": "^1.1.0",
-    "vwbl-sdk": "https://github.com/VWBL/VWBL-SDK.git#develop",
+    "vwbl-sdk": "0.1.5",
     "web3modal": "^1.9.10"
   }
 }
