@@ -12,6 +12,7 @@ a {
 
 a:hover {
   text-decoration: none;
+  color: #0070f3;
 }
 
 * {

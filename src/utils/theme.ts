@@ -1,6 +1,9 @@
-import { extendTheme } from '@chakra-ui/react';
+import { extendBaseTheme } from '@chakra-ui/react';
+import chakraTheme from '@chakra-ui/theme';
 
-export const theme = extendTheme({
+const { Link } = chakraTheme.components;
+
+export const theme = extendBaseTheme({
   colors: {
     transparent: 'transparent',
     black: '#000',
