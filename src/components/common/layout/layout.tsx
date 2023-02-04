@@ -1,8 +1,8 @@
-import { Footer } from '../footer';
+import { Footer, footerHeight } from '../footer';
 import Head from 'next/head';
 import { FC, ReactNode } from 'react';
 import { Box } from '@chakra-ui/react';
-import { Header } from '../header';
+import { Header, headerHeight } from '../header';
 
 type Props = {
   children: ReactNode;
@@ -18,7 +18,7 @@ export const Layout: FC<Props> = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <Box minH={`calc(100vh - 120px)`} p={8}>
+      <Box minH={`calc(100vh - ${headerHeight} - ${footerHeight})`} py={8} px={14}>
         {children}
       </Box>
       <Footer />
