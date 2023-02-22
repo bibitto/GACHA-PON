@@ -1,8 +1,8 @@
 import { NextPage } from 'next';
-import { Gacha } from '../../components/pages/gacha';
+import { Account } from '../../components/pages/account';
 
 const Page: NextPage = () => {
-  return <Gacha />;
+  return <Account />;
 };
 
 export default Page;
