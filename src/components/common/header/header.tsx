@@ -3,6 +3,8 @@ import { Box, Flex, HStack, Text, Button } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { IconBolloon } from '../icon-balloon';
 import { useState } from 'react';
+import { UserContainer } from '../../../containers';
+import { MenuButton } from '../menu-button';
 
 export const headerHeight = '75px';
 
@@ -12,12 +14,12 @@ export const HeaderLinks = [
     to: '/',
   },
   {
-    title: 'Gachas',
-    to: '/gachas',
+    title: 'Market',
+    to: '/market',
   },
   {
-    title: 'Community',
-    to: '/community',
+    title: 'Account',
+    to: '/account',
   },
 ];
 
@@ -26,6 +28,11 @@ export const Header = () => {
   const handleOpen = () => setOpen((prev) => !prev);
   const router = useRouter();
   const currentPath = router.pathname === '/' ? 'home' : router.pathname;
+  const { userAddress, provider, connectWallet, disconnectWallet } = UserContainer.useContainer();
+  const logout = () => {
+    disconnectWallet();
+    router.push('/');
+  };
   return (
     <Box h={headerHeight} px={12} borderY={'4px solid black'} display="flex" alignItems={'center'}>
       <Box
@@ -62,7 +69,7 @@ export const Header = () => {
         </Link>
       </Box>
       <Flex width={'100%'} alignItems={'center'} justifyContent={'space-between'}>
-        <Box
+        <HStack
           sx={{
             fontWeight: 700,
             fontSize: 20,
@@ -72,21 +79,25 @@ export const Header = () => {
           }}
           onClick={handleOpen}
         >
-          Gacha-Gacha Community
-        </Box>
+          <Text>Gacha-Pon</Text>
+        </HStack>
 
         <Flex alignItems={'center'} display={{ base: 'none', md: 'flex' }}>
-          <HStack as={'nav'} spacing={6} mr={12}>
-            {HeaderLinks.map((link, i) => (
-              <NavLink key={i} title={link.title} to={link.to} path={currentPath} />
-            ))}
-          </HStack>
-          {false ? (
-            <Button className="nes-btn" w={200}>
-              My Wallet
-            </Button>
+          {userAddress && provider ? (
+            <>
+              <HStack as={'nav'} spacing={8} mr={12}>
+                {HeaderLinks.map((link, i) => (
+                  <NavLink key={i} title={link.title} to={link.to} path={currentPath} />
+                ))}
+              </HStack>
+              <Button className="nes-btn is-error" onClick={logout} w={200}>
+                Disconnect
+              </Button>
+            </>
           ) : (
-            <Button className="nes-btn">Connect Wallet</Button>
+            <Button className="nes-btn is-primary" onClick={connectWallet}>
+              Connect Wallet
+            </Button>
           )}
         </Flex>
       </Flex>
