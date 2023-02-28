@@ -2,16 +2,12 @@ import { Box, Text, VStack, Image, Wrap, WrapItem, Button, HStack } from '@chakr
 import { FC, useState } from 'react';
 import cx from 'classnames';
 import { sliceNftsByCount } from '../../../utils/helper';
-
-type NFT = {
-  name: string;
-  description: string;
-  image: string;
-};
+import { NFTMetadata } from '../../../types';
+import { hoveredNesPointer } from '../../../utils/const';
 
 type Props = {
   title?: string;
-  nfts: NFT[];
+  nfts: NFTMetadata[];
 };
 
 export const NftList: FC<Props> = ({ title, nfts }) => {
@@ -41,7 +37,7 @@ export const NftList: FC<Props> = ({ title, nfts }) => {
               width="auto !important"
               px={4}
             >
-              20
+              {nfts.length}
             </Text>
           </Box>
         </Text>
@@ -55,13 +51,17 @@ export const NftList: FC<Props> = ({ title, nfts }) => {
         </Box>
       </HStack>
       <Wrap spacing={3} w={900} h={480}>
-        {slicedNfts[pageNum - 1].map((nft, i) => {
-          return (
-            <WrapItem key={i}>
-              <NftItem {...nft} />
-            </WrapItem>
-          );
-        })}
+        {nfts.length ? (
+          slicedNfts[pageNum - 1].map((nft, i) => {
+            return (
+              <WrapItem key={i}>
+                <NftItem {...nft} />
+              </WrapItem>
+            );
+          })
+        ) : (
+          <Box>No NFTs ...</Box>
+        )}
       </Wrap>
       <HStack justify={'center'} spacing={10} pt={5}>
         <Button
@@ -84,7 +84,7 @@ export const NftList: FC<Props> = ({ title, nfts }) => {
   );
 };
 
-export const NftItem: FC<NFT> = ({ name, description, image }) => {
+export const NftItem: FC<NFTMetadata> = (nft) => {
   return (
     <VStack
       className="nes-container is-rounded"
@@ -92,14 +92,13 @@ export const NftItem: FC<NFT> = ({ name, description, image }) => {
       _hover={{
         transition: '0.4s',
         opacity: 0.7,
-        cursor:
-          'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0,pointer',
+        cursor: hoveredNesPointer,
       }}
     >
-      <Image src={image} alt="NFT" w={200} h={180} />
-      <Text>{name.length >= 10 ? name.slice(0, 9) + '…' : name}</Text>
+      <Image src={nft.image} alt="NFT" w={200} h={180} />
+      <Text py={'4px'} fontSize={12}>
+        {nft.name.length >= 15 ? nft.name.slice(0, 14) + '…' : nft.name}
+      </Text>
     </VStack>
   );
 };
-
-export const AddCard = () => {};

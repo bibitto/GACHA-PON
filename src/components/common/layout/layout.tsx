@@ -12,19 +12,18 @@ export const Layout: FC<Props> = ({ children }) => {
   return (
     <>
       <Head>
-        <title>Gacha-Gacha Community</title>
-        <meta name="description" content="VWBL-NFT ガチャ" />
+        <title>Gacha-Pon</title>
+        <meta name="description" content="Gacha-Pon is community" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
       <Box
-        minH={`calc(100vh - ${headerHeight} - ${footerHeight})`}
+        h={`calc(100vh - ${headerHeight} - ${footerHeight})`}
         display="flex"
         flexDirection={'column'}
         justifyContent={'center'}
-        py={8}
-        px={14}
+        overflowY={'scroll'}
       >
         {children}
       </Box>

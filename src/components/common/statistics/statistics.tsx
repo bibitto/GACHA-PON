@@ -18,10 +18,10 @@ const StatsCard = (props: StatsCardProps) => {
   const { title, stat, unit, icon } = props;
   return (
     <Stat
+      className="nes-container"
       px={{ base: 2, md: 4 }}
       py={'5'}
       shadow={'xl'}
-      border={'1px solid'}
       borderColor={useColorModeValue('gray.800', 'gray.500')}
       rounded={'lg'}
     >
@@ -51,9 +51,12 @@ export const Statistics = () => {
   return (
     <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
-        <StatsCard title={'Community'} stat={'1,204'} unit={'人'} icon={<BsPerson size={'3em'} />} />
-        <StatsCard title={'ArtWork'} stat={'29'} unit={'個'} icon={<BsCardImage size={'3em'} />} />
-        <StatsCard title={'TradingVolume'} stat={'7'} unit={'＄'} icon={<AiOutlineBarChart size={'3em'} />} />
+        <StatsCard title={'Community'} stat={'1,204'} unit={''} icon={<i className="nes-pokeball"></i>} />
+        <StatsCard title={'Total Cupsule'} stat={'29'} unit={''} icon={<i className="nes-pokeball"></i>} />
+        <StatsCard title={'TradingVolume'} stat={'7'} unit={'jpy'} icon={<i className="nes-pokeball"></i>} />
+        <StatsCard title={'Community'} stat={'1,204'} unit={''} icon={<BsPerson size={'3em'} />} />
+        <StatsCard title={'TotalStaked'} stat={'29'} unit={''} icon={<BsCardImage size={'3em'} />} />
+        <StatsCard title={'TradingVolume'} stat={'7'} unit={'jpy'} icon={<AiOutlineBarChart size={'3em'} />} />
       </SimpleGrid>
     </Box>
   );
